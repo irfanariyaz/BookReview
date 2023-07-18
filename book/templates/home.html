@@ -12,7 +12,7 @@
 </form>
 
 <p>Searching for: {{searchTerm}}</p>
-
+<a href="{% url 'createbook' %}"  class="btn btn-primary">Add new Book</a>
 <br />
 <br>
 
@@ -27,7 +27,7 @@
               </a>
               <p class="card-text">{{book.description}}</p>
               {% if book.url %}
-                 <a href="{{book.url}}" class="btn btn-primarys">Book Link</a>
+                 <a href="{{book.url}}" class="btn btn-primary">Book Link</a>
               {% endif %}
             </div>
           </div>

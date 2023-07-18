@@ -89,9 +89,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'railway',
         'USER': 'postgres',
-        'PASSWORD': 'dv2QkPsQhw72nb1CtrvQ',
-        'HOST': 'containers-us-west-52.railway.app',
-        'PORT': '7573',
+        'PASSWORD': 'QQMeTvPPqP0zfUwbUYcd',
+        'HOST': 'containers-us-west-61.railway.app',
+        'PORT': '7547',
     }
 }
 
@@ -131,7 +131,7 @@ LOGIN_URL = 'loginaccount'
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'bookreview/static')]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'bookreview/static/')]
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 # Default primary key field type

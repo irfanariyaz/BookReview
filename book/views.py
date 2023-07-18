@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .models import Book,Review
 from django.shortcuts import get_object_or_404
 from django.shortcuts import redirect
-from .forms import ReviewForm
+from .forms import ReviewForm,AddBookForm
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 
@@ -34,6 +34,34 @@ def detail(request,book_id):
     book = get_object_or_404(Book, pk=book_id)
     reviews = Review.objects.filter(book = book)
     return render(request, 'detail.html', {'book':book,'reviews':reviews})
+
+def createbook(request):
+    if request.method == 'GET':
+        form = AddBookForm()
+      
+    else:
+        form = AddBookForm(request.POST,request.FILES)
+        if form.is_valid():
+                print('datas inside form',form.cleaned_data)
+                post = form.save(commit=False)
+                post.save()
+                print(post.save())
+                return redirect('home')
+        else:
+                return render(request, 'createbook.html', {'form':form, 'error':'bad data passed in'})
+    return render(request, 'createbook.html', {'form':form})
+    
+    
+    # if request.method == 'POST':
+    #     form = AddBookForm(request.POST)
+    #     if form.is_valid():
+    #         form.save()
+    #         return redirect('home')
+    # else:
+    #         form = AddBookForm()
+    # return render(request, 'createbook.html', {'form':form})
+
+
 @login_required
 def createreview(request,book_id):
     book = get_object_or_404(Book, pk=book_id)
